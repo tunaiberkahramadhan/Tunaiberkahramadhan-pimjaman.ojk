@@ -1,161 +1,153 @@
-<!DOCTYPE html>
+
+   <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tunai ABC Berkah Ramadhan</title>
+    <title>Menu Awal TUNAI ABC</title>
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-
         body {
-            background-color: #f0f4f8;
-            padding: 10px;
+            background-color: #000000;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 25px 15px 0;
         }
-
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .banner {
+        /* Kontainer diperbesar sedikit agar pas */
+        .menu-container {
+            width: 92%;
+            max-width: 400px;
+            background-color: #1a1a2e;
+            padding: 18px;
             text-align: center;
-            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 119, 255, 0.4);
         }
-
-        .banner h1 {
-            color: #2c3e50;
+        /* Judul diperbesar agar jelas */
+        .main-title {
+            background: linear-gradient(90deg, #0077ff, #9900ff);
+            padding: 15px 10px;
+            margin-bottom: 18px;
+            box-shadow: 0 0 20px rgba(0, 119, 255, 0.8);
+        }
+        .main-title h1 {
+            color: white;
             font-size: 22px;
-            margin-bottom: 5px;
+            font-weight: bold;
+            margin: 0;
+            line-height: 1.5;
         }
-
-        .banner p {
-            color: #7f8c8d;
+        /* Sub teks diperbesar */
+        .sub-text {
+            color: white;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+        /* Tag OJK pas ukuran */
+        .ojk-tag {
+            background-color: #ff0033;
+            color: white;
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 18px;
+            display: inline-block;
+            margin-bottom: 18px;
+            font-size: 13px;
+        }
+        /* Judul nominal pas ukuran */
+        .amount-title {
+            color: white;
             font-size: 16px;
-        }
-
-        .ojk {
-            color: #27ae60 !important;
             font-weight: bold;
+            margin-bottom: 15px;
+            text-align: left;
+            padding-left: 8px;
         }
-
-        .form-step {
-            display: none;
+        /* Nominal diperbesar agar jelas */
+        .amount-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            margin-bottom: 18px;
+            padding-bottom: 8px;
+            padding-left: 8px;
         }
-
-        .form-step.active {
-            display: block;
-        }
-
-        .form-label {
-            display: block;
-            margin-top: 15px;
-            margin-bottom: 5px;
-            color: #2c3e50;
+        .amount-item {
+            background: linear-gradient(90deg, #ff6600, #ff9933);
+            color: white;
             font-weight: bold;
+            padding: 10px 14px;
+            border-radius: 6px;
+            white-space: nowrap;
+            box-shadow: 0 0 12px rgba(255, 102, 0, 0.6);
+            cursor: default;
             font-size: 14px;
         }
-
-        .form-input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #bdc3c7;
-            border-radius: 5px;
-            font-size: 16px;
-            background-color: #f8f9fa;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 12px;
-            background-color: #3498db;
+        /* Tombol ajukan diperbesar */
+        .btn-display {
+            background: linear-gradient(90deg, #ff0033, #ff3366);
             color: white;
-            border: none;
-            border-radius: 5px;
             font-size: 16px;
             font-weight: bold;
-            margin-top: 20px;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: #2980b9;
-        }
-
-        .verify-title {
-            text-align: center;
-            color: #27ae60;
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-
-        .verify-subtitle {
-            text-align: center;
-            color: #7f8c8d;
-            margin-bottom: 20px;
-        }
-
-        .limit-slider {
-            width: 100%;
-            margin: 15px 0;
-        }
-
-        .limit-show {
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-
-        .success-box {
-            text-align: center;
-            padding: 30px 10px;
-        }
-
-        .success-box h2 {
-            color: #27ae60;
-            margin-bottom: 15px;
-            font-size: 22px;
-        }
-
-        .success-box p {
-            color: #7f8c8d;
-            font-size: 16px;
-            margin-bottom: 10px;
+            padding: 14px 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 0, 51, 0.8);
+            cursor: default;
         }
     </style>
- </head>
- <body>
-<div style="background-color:#2c3e50; padding:15px; text-align:center; color:white; font-weight:bold;">
-    <marquee behavior="scroll" direction="left" scrollamount="5">✨ PINJAMAN MUDAH & CEPAT - TUNAI ABC BERKAH RAMADHAN - BERIZIN & DIAWASI OJK ✨</marquee>
-</div>
-
-<div style="text-align:center; padding:10px; background-color:#f8f9fa; border-bottom:2px solid #27ae60;">
-    <h3 style="color:#2c3e50; margin:0;">💸 AJUKAN PINJAMAN SAMPAI JUTAAN RUPIAH, PROSES CUMAN BEBERAPA MENIT!</h3>
-</div>
-     
-
-    
-    
-
-        <!-- STEP 1: PENDAFTARAN AWAL -->
-        <div class="form-step active" id="step1">
-            <label class="form-label">Nomor HP Anda</label>
-            <input type="tel" class="form-input" id="hp"
-            
-            
-            
-            <button class="btn" onclick="gantiStep(2)">Lanjut ke Data Diri</button>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="main-title">
+            <h1>TUNAI ABC<br>BERKAH<br>RAMADHAN</h1>
         </div>
+
+        <div class="sub-text">Pinjaman Mudah • Cair Cepat</div>
+        <div class="ojk-tag">✅ BERIZIN & DIAWASI OJK</div>
+
+        <div class="amount-title">PILIH NOMINAL PINJAMAN:</div>
+        <div class="amount-container">
+            <div class="amount-item">10 JUTA</div>
+            <div class="amount-item">25 JUTA</div>
+            <div class="amount-item">50 JUTA</div>
+            <div class="amount-item">75 JUTA</div>
+            <div class="amount-item">100 JUTA</div>
+            <div class="amount-item">125 JUTA</div>
+            <div class="amount-item">150 JUTA</div>
+            <div class="amount-item">175 JUTA</div>
+            <div class="amount-item">200 JUTA</div>
+            <div class="amount-item">250 JUTA</div>
+        </div>
+
+        <div class="btn-display">AJUKAN PINJAMAN SEKARANG</div>
+    </div>
+</body>
+</html>
+
+<!-- Bagian Input & Tombol Saja -->
+<div class="form-group">
+    <label for="phone" class="form-label">Nomor Hp</label>
+    <input type="tel" id="phone" class="form-input" placeholder="Masukkan nomor HP aktif" required>
+</div>
+
+<div class="form-group">
+    <label for="nik" class="form-label">Nomor Nik Ktp</label>
+    <input type="text" id="nik" class="form-input" placeholder="Masukkan nomor NIK KTP" required>
+</div>
+
+<div class="form-group">
+    <label for="fullname" class="form-label">Nama Sesuai  ktp</label>
+    <input type="text" id="fullname" class="form-input" placeholder="Masukkan nama sesuai KTP" required>
+</div>
+
+<button type="submit" class="submit-btn">LANJUTKAN PENGISIAN</button>
 
         <!-- STEP 2: DATA DIRI -->
         <div class="form-step" id="step2">
@@ -174,7 +166,7 @@
             <label class="form-label">Nama Ibu Kandung</label>
             <input type="text" class="form-input" id="ibu-kandung" placeholder="Contoh: SITI MARIA">
             
-            <button class="btn" onclick="gantiStep(1)">Kembali</button>
+            <button class="btn" onclick="gantiStep(1)">
             <br><br>
             <button class="btn" onclick="gantiStep(3)">Lanjut ke Data Pekerjaan</button>
         </div>
@@ -189,45 +181,7 @@
     </html>
 
     
-    <body>
-    <div class="container">
-        <!-- BANNER -->
-        <div class="banner">
-            <h1>TUNAI ABC BERKAH RAMADHAN</h1>
-            <p>Pinjaman Mudah • Cair Cepat</p>
-            <p class="ojk">BERIZIN & DIAWASI OJK</p>
-        </div>
 
-        <!-- STEP 1: PENDAFTARAN AWAL -->
-        <div class="form-step active" id="step1">
-            <label class="form-label">Nomor HP Anda</label>
-            <input type="tel" class="form-input" id="hp" placeholder="Contoh: 081234567890">
-
-            <label class="form-label">Nama Pengguna (Nick KTP)</label>
-            <input type="text" class="form-input" id="nick-ktp" placeholder="Contoh: agus_ktp123">
-
-            <label class="form-label">Nama Lengkap Sesuai KTP</label>
-            <input type="text" class="form-input" id="nama-ktp" placeholder="Contoh: AGUS SANTOSO">
-
-            <button class="btn" onclick="gantiStep(2)">Lanjut ke Data Diri</button>
-        </div>
-
-        <!-- STEP 2: DATA DIRI -->
-        <div class="form-step" id="step2">
-            <label class="form-label">Tanggal Lahir</label>
-            <input type="date" class="form-input" id="tgl-lahir">
-
-            <label class="form-label">Kecamatan</label>
-            <input type="text" class="form-input" id="kecamatan" placeholder="Contoh: Kedaton">
-
-            <label class="form-label">Desa/Kelurahan</label>
-            <input type="text" class="form-input" id="desa" placeholder="Contoh: Sukarame">
-
-            <label class="form-label">Kode POS</label>
-            <input type="text" class="form-input" id="kodepos" placeholder="Contoh: 30123">
-
-            <label class="form-label">Nama Ibu Kandung</label>
-            <input type="text" class="form-input" id="ibu-kandung" placeholder="Contoh: SITI MARIA">
 
             <button class="btn" onclick="gantiStep(3)">Lanjut ke Data Pekerjaan</button>
         </div>
