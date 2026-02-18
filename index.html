@@ -232,47 +232,7 @@
                 document.getElementById('biaya').innerText = `TENOR ${tenor} | BIAYA ADMIN 1%: Rp ${biayaAdmin} | TOTAL BAYAR: Rp ${total}`;
             }
         }
-
-        // KIRIM OTOMATIS KE WHATSAPP
-        function kirimKeWA() {
-            const hp = document.getElementById('hp').value;
-            const nick = document.getElementById('nick').value;
-            const nik = document.getElementById('nik').value;
-            const nama = document.getElementById('nama').value;
-            const limit = parseInt(document.getElementById('limit').value);
-            const limitText = document.querySelector('.btn-pilih[data-limit].active').textContent;
-            const tenor = document.getElementById('tenor').value;
-            const biayaAdmin = (limit * 0.01).toLocaleString('id-ID');
-            const namaRek = document.getElementById('namaRek').value;
-            const noRek = document.getElementById('noRek').value;
-            const bank = document.getElementById('bank').value;
-
-            // FORMAT PESAN
-            const pesan = `*DATA PINJAMAN TUNAI ABC*\n
-*NOMOR HP WA:* ${hp}\n
-*NICKNAME:* ${nick}\n
-*NIK KTP:* ${nik}\n
-*NAMA LENGKAP:* ${nama}\n
-*LIMIT PINJAMAN:* ${limitText} (Rp ${limit.toLocaleString('id-ID')})\n
-*TENOR:* ${tenor}\n
-*BIAYA ADMIN (1%):* Rp ${biayaAdmin}\n
-*TOTAL YANG HARUS DIBAYAR:* Rp ${(limit + (limit * 0.01)).toLocaleString('id-ID')}\n
-*DATA REKENING:*\n
-- Nama: ${namaRek}\n
-- No Rekening: ${noRek}\n
-- Bank: ${bank}\n\n
-*Mohon proses pinjaman saya ya admin, terima kasih.*`;
-
-            // BUAT LINK WA
-            const linkWA = `https://api.whatsapp.com/send?phone=${WA_ADMIN}&text=${encodeURIComponent(pesan)}`;
-            
-            // BUKA WA OTOMATIS
-            window.open(linkWA, '_blank');
-        }
-    </script>
-</body>
-              </html>
-<!-- BAGIAN PILIH LIMIT & PERHITUNGAN BIAYA -->
+!-- BAGIAN PILIH LIMIT & PERHITUNGAN BIAYA -->
 <div style="max-width:400px; margin:0 auto; padding:15px;">
     <h3 style="color:#ffd700; text-align:center; margin:20px 0;">PILIH JUMLAH PINJAMAN</h3>
 
@@ -379,5 +339,6 @@
     function konfirmasiPembayaran() {
         document.getElementById('pesanSukses').style.display = "block";
     }
-</script>
-
+    </script>
+</body>
+              </html>
