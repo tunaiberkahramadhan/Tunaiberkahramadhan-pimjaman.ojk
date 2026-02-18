@@ -271,13 +271,64 @@
                 document.getElementById('biaya').innerText = `TENOR ${tenor} | BIAYA ADMIN 1%: Rp ${biayaAdmin} | TOTAL BAYAR: Rp ${total}`;
             }
         }
+// ... KODE SEBELUMNYA SAMPAI BARIS 273 ...
+function hitungBiaya() {
+    const limit = parseInt(document.getElementById('limit').value) || 0;
+    const tenor = document.getElementById('tenor').value || '';
+    const biayaAdmin = (limit * 0.01).toLocaleString('id-ID');
+    const total = (limit + (limit * 0.01)).toLocaleString('id-ID');
+
+    if(limit > 0 && tenor) {
+        document.getElementById('biaya').innerText = `TENOR ${tenor} | BIAYA ADMIN 1%: Rp ${biayaAdmin} | TOTAL: Rp ${total}`;
+    }
+}
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HITUNG BIAYA ADMIN 1%</title>
+    <title>APLIKASI PINJAMAN</title>
     <style>
+        /* SEMUA STYLE DARI YANG DIHAPUS TADI DITEMPATKAN DISINI */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #000000;
+            padding: 20px;
+        }
+        .container {
+            max-width: 450px;
+            margin: 0 auto;
+            background-color: #121212;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+        }
+        /* STYLE LAINNYA DISINI */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- STEP 1, 2, DAN 3 APLIKASI -->
+        <div id="step1">...</div>
+        <div id="step2">...</div>
+        <div id="step3">
+            <!-- ELEMEN HITUNG BIAYA & REKENING DISINI -->
+            <div id="biaya"></div>
+            <div class="payment-section">...</div>
+        </div>
+    </div>
+
+    <script>
+        // SEMUA FUNGSI JAVASCRIPT DISINI (TERMASUK hitungBiaya(), keStep3(), dll.)
+    </script>
+</body>
+</html>
+            
         * {
             margin: 0;
             padding: 0;
